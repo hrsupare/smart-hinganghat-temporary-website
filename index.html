@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Hinganghat</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #090909;
+            --text: #ffffff;
+            --muted: #c9c9c9;
+            --accent: #ff7a2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* ================= CINEMATIC INTRO ================= */
+        #intro {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            animation: introFade 3s forwards;
+        }
+
+        #intro h1 {
+            font-size: 2.2rem;
+            letter-spacing: 0.45em;
+            opacity: 0;
+            animation: introText 3s forwards;
+        }
+
+        @keyframes introFade {
+            0% {
+                opacity: 1;
+            }
+
+            85% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes introText {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            40% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* ================= BACKGROUND POWER ================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(60% 40% at 50% 18%, rgba(255, 122, 47, 0.28), transparent 60%),
+                radial-gradient(40% 30% at 80% 85%, rgba(255, 255, 255, 0.08), transparent 65%);
+            animation: breathe 9s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ================= PAGE ================= */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 36px 24px;
+        }
+
+        .content {
+            max-width: 760px;
+            opacity: 0;
+            animation: rise 2s ease-out forwards;
+        }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= ABSTRACT MAP ================= */
+        .map {
+            width: 260px;
+            height: 160px;
+            margin: 0 auto 28px;
+        }
+
+        .map svg path {
+            stroke: var(--accent);
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.6;
+            animation: mapGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes mapGlow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ================= TEXT ================= */
+        .epoch {
+            font-size: 12px;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 4.2rem);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .statement {
+            font-size: 1.35rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        /* ================= PHASE ================= */
+        .phase {
+            font-size: 1.1rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 34px;
+        }
+
+        /* ================= DIVIDER ================= */
+        .divider {
+            width: 160px;
+            height: 2px;
+            margin: 0 auto 38px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    var(--accent),
+                    transparent);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ================= FOOTER ================= */
+        .meta {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .marathi {
+            font-size: 1rem;
+            color: var(--muted);
+            margin-top: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .early {
+            margin-top: 32px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CINEMATIC INTRO -->
+    <div id="intro">
+        <h1>IT BEGINS</h1>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <main class="page">
+        <section class="content">
+
+            <div class="epoch">The Beginning</div>
+
+            <h1>Smart Hinganghat</h1>
+
+            <p class="statement">
+                A historic, institutional-scale moment<br>
+                is approaching.
+            </p>
+
+            <p class="statement" id="statement">
+                This is not a launch.<br>
+                This is the moment before<br>
+                a city changes direction.
+            </p>
+
+            <div class="phase" id="phase">Preparing</div>
+
+            <div class="divider"></div>
+
+            <div class="meta">Hinganghat, Maharashtra</div>
+            <div class="marathi">हिंगणघाटच्या इतिहासात नवा अध्याय</div>
+
+            <div class="early">
+                You are seeing this before it begins.
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+         const phases = ["Preparing", "Aligning", "Building", "Almost Ready"];
+        let index = 0;
+
+        setInterval(() => {
+            index = (index + 1) % phases.length;
+            document.getElementById("phase").innerText = phases[index];
+        }, 2600);
+
+     
+        const launchDate = new Date("2025-02-01");
+
+        if (new Date() >= launchDate) {
+            document.getElementById("statement").innerHTML =
+                "The wait is over.<br>The city has stepped forward.";
+            document.querySelector(".early").innerText =
+                "This is the beginning.";
+        }
+    </script>
+
+</body>
+
+</html>
